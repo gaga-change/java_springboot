@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://qdm195081390.my3w.com:3306/qdm195081390_db
+    username: qdm195081390
+    password: ${MYSQL_AL_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+girl:
+    cupSize: B
+    age: 18
+    content: "cupSize:${cupSize}, age: ${age}"
