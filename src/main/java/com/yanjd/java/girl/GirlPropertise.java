@@ -1,4 +1,4 @@
-package com.yanjd.girl;
+package com.yanjd.java.girl;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

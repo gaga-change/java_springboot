@@ -1,7 +1,8 @@
-package com.yanjd.girl;
+package com.yanjd.java;
 
+import com.yanjd.java.girl.Girl;
+import com.yanjd.java.girl.GirlPropertise;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

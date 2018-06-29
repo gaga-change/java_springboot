@@ -1,9 +1,11 @@
-package com.yanjd.girl;
+package com.yanjd.java.girl;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+// @Entity  hibernte 映射对象
+// @Table(name = "girl") 类声明此对象映射到哪个表
 @Entity
 public class Girl {
     public Girl() {
@@ -24,7 +26,8 @@ public class Girl {
         this.cupSize = cupSize;
     }
 
-
+    // @Id 声明属性为主键
+    // @GeneratedValue 表示主键是自动生成策略，一般该注释和 @Id 一起使用
     @Id
     @GeneratedValue
     private Integer id;

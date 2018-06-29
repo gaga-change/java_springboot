@@ -1,10 +1,8 @@
-package com.yanjd.girl;
+package com.yanjd.java.girl;
 
-import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Null;
 import java.util.List;
 
 @RestController

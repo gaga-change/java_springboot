@@ -1,12 +1,12 @@
-package com.yanjd.girl;
+package com.yanjd.java;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GirlApplication {
+public class ApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GirlApplication.class, args);
+        SpringApplication.run(ApiApplication.class, args);
     }
 }
