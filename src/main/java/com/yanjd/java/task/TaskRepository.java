@@ -1,4 +1,6 @@
 package com.yanjd.java.task;
 
-public class TaskRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TaskRepository extends JpaRepository<Task, Integer> {
 }
