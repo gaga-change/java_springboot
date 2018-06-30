@@ -5,6 +5,7 @@ import org.springframework.data.domain.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Date;
 
 @RestController
 public class TaskController {
@@ -97,17 +98,28 @@ public class TaskController {
     /**
      * 修改任务
      *
-     * @param id
-     * @param content
-     * @return
+     * @param id 任务ID
+     * @param content 内容
+     * @param level 优先级
+     * @param close 是否关闭
+     * @param remove 是否移除
+     * @return Task
      */
     @PutMapping(value = "/tasks/{id}")
     public Task modifyTask(
             @PathVariable("id") Integer id,
-            @RequestParam("content") String content
+            @RequestParam(value = "content", required = false) String content,
+            @RequestParam(value = "level", required = false) Integer level,
+            @RequestParam(value = "close", required = false) String close,
+            @RequestParam(value = "remove", required = false) String remove
     ) {
         Task task = taskRepository.findById(id).orElse(null);
-        task.setContent(content);
+        if (task == null) return null;
+        if (content != null) task.setContent(content);
+        if (level != null) task.setLevel(level);
+        if (close != null) task.setClose(close.equals("1"));
+        if (remove != null) task.setRemove(remove.equals("1"));
+        if (content != null || level != null) task.setModifyTime(new Date());
         return taskRepository.save(task);
     }
 }
