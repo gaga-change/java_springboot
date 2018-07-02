@@ -67,18 +67,18 @@ public class TaskController {
 
     /**
      * 添加任务
+     *
      * @param content 内容
-     * @param level 优先级
+     * @param level   优先级
      * @return Task
      */
     @PostMapping(value = "/tasks")
     public Task saveTask(
-            @RequestParam("content") String content,
-            @RequestParam(value = "level", defaultValue = "0") Integer level
+            @RequestBody Task taskParams
     ) {
         Task task = new Task();
-        task.setLevel(level);
-        task.setContent(content);
+        task.setLevel(taskParams.getLevel());
+        task.setContent(taskParams.getContent());
         Task task1 = taskRepository.save(task);
         return task1;
     }
@@ -98,28 +98,25 @@ public class TaskController {
     /**
      * 修改任务
      *
-     * @param id 任务ID
+     * @param id      任务ID
      * @param content 内容
-     * @param level 优先级
-     * @param close 是否关闭
-     * @param remove 是否移除
+     * @param level   优先级
+     * @param close   是否关闭
+     * @param remove  是否移除
      * @return Task
      */
     @PutMapping(value = "/tasks/{id}")
     public Task modifyTask(
             @PathVariable("id") Integer id,
-            @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "level", required = false) Integer level,
-            @RequestParam(value = "close", required = false) String close,
-            @RequestParam(value = "remove", required = false) String remove
+            @RequestBody Task taskParams
     ) {
         Task task = taskRepository.findById(id).orElse(null);
         if (task == null) return null;
-        if (content != null) task.setContent(content);
-        if (level != null) task.setLevel(level);
-        if (close != null) task.setClose(close.equals("1"));
-        if (remove != null) task.setRemove(remove.equals("1"));
-        if (content != null || level != null) task.setModifyTime(new Date());
+        task.setContent(taskParams.getContent());
+        task.setLevel(taskParams.getLevel());
+        task.setClose(taskParams.getClose());
+        task.setRemove(taskParams.getRemove());
+        task.setModifyTime(new Date());
         return taskRepository.save(task);
     }
 }
